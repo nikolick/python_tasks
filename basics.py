@@ -1,4 +1,4 @@
-import errno
+
 def parse_expression_postfix():
     try:
         expr = input("Input binary postfix expression: (allowed operators: +, -, *, /,) ")
@@ -30,7 +30,6 @@ def parse_expression_postfix():
         print("Unexpected syntax error, sorry :(")
         return None
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     value = None
     while value is None:
@@ -38,4 +37,3 @@ if __name__ == '__main__':
     print(value)
 
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

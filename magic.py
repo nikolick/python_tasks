@@ -16,7 +16,11 @@ class Config:
             type(self).__setattr__(self, k, v)
 
     def __getitem__(self, item):
-        return self.__dict__[item]
+        try:
+            idx = item.index('.')
+            return self.__dict__[item[0:idx]].__getitem__(item[idx+1:])
+        except ValueError:
+            return self.__dict__[item]
 
     def __str__(self):
         return str(self.__dict__)
@@ -38,7 +42,11 @@ if __name__ == '__main__':
     object_as_dict = load_json("object.json")
     conf = Config(object_as_dict)
 
-    print(conf['b.c'])
+    print(conf['b.c.d'])
+    print(conf.b['c.d'])
+    print(conf.b.c.d)
+    print(conf['b']['c']['d'])
+    print(conf['b.c'].d)
 #    print(conf['b'])
 
 #    print(object_as_dict['niz'][0])
